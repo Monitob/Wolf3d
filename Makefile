@@ -18,7 +18,7 @@ SRC = main.c display_screen.c ft_open.c
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -I./libft/
+CFLAGS =  -I../../../lib42/minilibx/ -I./libft/
 
 all: $(NAME)
 

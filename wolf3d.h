@@ -23,13 +23,31 @@
 # include <errno.h>
 # include <fcntl.h>
 
-# define SCR_WIDTH 640
-# define SCR_HEIGHT 480
+/*
+ * Maccros Win
+ */
+# define SCR_WIDTH	640
+# define SCR_HEIGHT	680
+/*
+ * Maccros Img
+ */
+# define IMG_SIZE_X	600
+# define IMG_SIZE_Y	600
+# define IMG_POS_X	0
+# define IMG_POS_Y	0
+/*
+ * Maccros keys
+ */
+# define ESC		65307
+# define LEFT		65361
+# define RIGHT		65363
+# define UP		65362
+# define DOWN		65364
 
 typedef struct	s_world
 {
 	void		*init_mlx;
-	char		*data;
+	char		*mlx_data;
 	void		*init_win;
 }				t_world;
 
@@ -52,7 +70,7 @@ typedef struct	s_map
 	int			**map;
 }				t_map;
 
-t_map		*ft_filling_world(int fd, t_map *head);
+t_map			*ft_filling_world(int fd, t_map *head);
 int			**ft_realloc_world(t_map *head, char **line, int size);
 int			ft_open(const char *file, int flag);
 int			key_hook(int keycode, t_world *start);
