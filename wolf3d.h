@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 17:46:53 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/01/14 23:09:37 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/01/15 22:00:38 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@
 # include <unistd.h>
 # include <errno.h>
 # include <fcntl.h>
-
+/*
+ * Maccros Ray
+ */
+# define FOV		0.60
+# define POS_INIT_X 22
+# define POS_INIT_Y 12
 /*
  * Maccros Win
  */
@@ -57,12 +62,6 @@ typedef struct	s_camera
 	double		posi_y;
 }				t_camera;
 
-typedef struct	s_vect
-{
-	double		x;
-	double		y;
-}				t_vect;
-
 typedef struct	s_map
 {
 	int			height;
@@ -70,10 +69,41 @@ typedef struct	s_map
 	int			**map;
 }				t_map;
 
-t_map			*ft_filling_world(int fd, t_map *head);
+typedef struct	s_img
+{
+	void		*ptr_img;
+	int			size_line;
+	int			endian;
+	int			bpp;
+	char		*data;
+	int			x;
+	int			y;
+}				t_img;
+
+typedef	struct	s_fov
+{
+	float		x;
+	float		y;
+	float		presition;
+	int			angle;
+	int			speed;
+}				t_fov;
+
+typedef struct	s_data
+{
+	t_map		*map;
+	t_world		*win;
+	t_img		*imag;
+	t_img		*floor;
+	t_img		*murs;
+	t_fov		*persp;
+}				t_data;
+
+t_data	*init_data(t_data *data);
+t_map		*ft_filling_world(int fd, t_map *head);
 int			**ft_realloc_world(t_map *head, char **line, int size);
 int			ft_open(const char *file, int flag);
 int			key_hook(int keycode, t_world *start);
-int			ft_display_screen(t_map *head);
+int			ft_display_screen(t_world *start);
 
 #endif

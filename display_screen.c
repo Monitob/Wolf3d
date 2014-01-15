@@ -6,18 +6,14 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 21:25:31 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/01/14 23:00:30 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/01/15 18:32:02 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int			ft_display_screen(t_map *head)
+int			ft_display_screen(t_world *start)
 {
-	t_world *start;
-
-	if (((start = (t_world *)ft_memalloc(sizeof(*start))) == NULL))
-		return (0);
 	start->init_mlx = mlx_init();
 	if (start->init_mlx == NULL)
 		return (0);
@@ -26,7 +22,7 @@ int			ft_display_screen(t_map *head)
 				"Wolf3d")) == NULL)
 		return (0);
 	mlx_key_hook(start->init_win, key_hook, start);
-	mlx_expose_hook(start->init_win, expose_hook, start);
+//	mlx_expose_hook(start->init_win, expose_hook, start);
 	mlx_loop(start->init_mlx);
 	return (0);
 }
@@ -41,11 +37,11 @@ int			key_hook(int keycode, t_world *start)
 	}
 	return (0);
 }
-
+/*
 int			expose_hook(t_world *start)
 {
 	if ((mlx_put_image_to_window(start->init_mlx, start->init_win,
 				start->imag, 0, 0)) == 0)
 		exit(0);
 	return (0);
-}
+}*/

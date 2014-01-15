@@ -6,32 +6,31 @@
 #    By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/14 17:46:32 by jbernabe          #+#    #+#              #
-#    Updated: 2014/01/14 21:57:42 by jbernabe         ###   ########.fr        #
+#    Updated: 2014/01/15 18:18:21 by jbernabe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc -Wall -Wextra -Werror
+CC = gcc
 
 NAME = wolf3d
 
-SRC = main.c display_screen.c ft_open.c
+SRC = main.c display_screen.c ft_open.c init_data.c
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS =  -I../../../lib42/minilibx/ -I./libft/
+CFLAGS = -Wall -Wextra -Werror -I./libft/
 
 all: $(NAME)
 
 $(NAME):	$(OBJ)
 		@$(MAKE) -C libft
 		$(CC) $(CFLAGS) -o $(NAME) $(OBJ)\
-		-L/usr/X11/lib -lmlx -lXext -lX11 \
-		-I/usr/X11/lib/include/ \
-		-L./libft/
+		-I/usr/X11/lib/include/ -L/usr/X11/lib -lmlx -lXext -lX11 \
+		-L./libft/ -lft
 
 %.o: %.c
 		@$(CC) $(CFLAGS) -c $<
-		@echo Compililing object  : $<
+		@echo Compiling object  : $<
 
 clean:		
 		@$(MAKE) -C libft
