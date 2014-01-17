@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 17:47:16 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/01/15 18:29:46 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/01/17 21:27:28 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,12 @@ int		main(int ac, char **av)
 			return (0);
 		if (ft_close(fd) < 0)
 			return (0);
+		mlx_expose_hook(head->win->init_win, &expose_hook, head);
 		ft_display_screen(head->win);
+		player_position(head->map, head->camera, head->persp);
+		get_img(head);
+		mlx_loop(head->win->init_mlx);
+		//	ft_draw_wall(head);
 
 	}
 	else
@@ -40,8 +45,6 @@ t_map		*ft_filling_world(int fd, t_map *head)
 	char	*line;
 	int	i;
 
-/*	if ((head = (t_map *)ft_memalloc(sizeof(head))) == NULL)
-		return (NULL);*/
 	head->map = NULL;
 	if ((get_next_line(fd, &line)) <= 0)
 		return (NULL);

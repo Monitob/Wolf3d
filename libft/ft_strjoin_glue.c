@@ -16,10 +16,12 @@ char				*ft_strjoin_glue(char *s1, char *s2, char c)
 {
 		char		*new_string;
 		size_t	len;
+		size_t	i;
 
 		if (s1)
 		{
 				len = ft_strlen(s1);
+				i = 0;
 				new_string = s1;
 				s1 = (char *)malloc((len + 2) * sizeof(char));
 				ft_strcpy(s1, new_string);

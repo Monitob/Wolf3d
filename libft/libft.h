@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 18:15:06 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/01/14 23:13:20 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/01/16 12:33:05 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			ft_isascii(int c);
 int			ft_isdigit(int c);
 int			ft_isprint(int c);
 void		*ft_memchr(const void *s, int c, size_t n);
-int			ft_memcmp(const void* s1, const  void *s2, size_t n);
+int			ft_memcmp(const void *s1, const void *s2, size_t n);
 void		*ft_memcpy(void *s1, const void *s2, size_t n);
 void		*ft_memmove(void *s1, const void *s2, size_t n);
 void		*ft_memset(void *b, int c, size_t len);

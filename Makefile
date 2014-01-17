@@ -6,7 +6,7 @@
 #    By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/01/14 17:46:32 by jbernabe          #+#    #+#              #
-#    Updated: 2014/01/15 18:18:21 by jbernabe         ###   ########.fr        #
+#    Updated: 2014/01/17 20:41:39 by jbernabe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = gcc
 
 NAME = wolf3d
 
-SRC = main.c display_screen.c ft_open.c init_data.c
+SRC = main.c display_screen.c ft_open.c init_data.c  ray_position.c
 
 OBJ = $(SRC:.c=.o)
 
