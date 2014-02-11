@@ -1,0 +1,37 @@
+Resolucion.x    Resoulucion.y
+/*********************************************************/
+/**********************************************************************/
+
+PosicionCamera.x   PosicionCamera.y   PosicionCamera.z
+PuntoObservado.x   PuntoObservado.y   PuntoObservado.z
+
+/**********************************************************************/
+
+TipoDeBrouillard   DistanciaDeBrouillard
+NumeroDeEsfera     NumeroDePlano       NumeroDeCilindro     NumerodeLuz
+
+/*********************************************************************/
+/**********************************************************************/
+
+Rayo1         Centro.x   Centro.y   Centro.z	TEXTURA	MATERIAL
+RayoN         Centro.n   Centro.n   Centro.n 	TEXTURA	MATERIAL
+
+/**********************************************************************/
+/**********************************************************************/
+
+PtPlano1.x    PtPlano1.y PtPlano.z	Normal.x Normal1.y Normal.z TEXTURA MATERIAL
+PtPlanoN.x    PtPlanoN.y PtPlanoN.z NormalN.x NormalN.y NormalN.z TEXTURA MATERIAL
+
+/**********************************************************************/
+/**********************************************************************/
+
+Normal1.x   Normal1.y  Normal1.z  PtAxel.x PtAxel.y PtAxel.z Rayo TEXTURA MATERIAL
+NormalN.x   NormalN.y  NormalN.z  PtAxelN.x PtAxelN.y PtAxelN.z Rayo TEXTUR MATERIA
+
+/**********************************************************************/
+/**********************************************************************/
+
+PosLum1.x PosLum1.y  PosLum1.z    Color1.rojo  Color1.verde  Color1.Azul  CoefDif
+PosLumN.x PosLumN.y  PosLumN.z    ColorN.rojo  ColorN.verde  ColorN.Azul  CoefDif
+
+
