@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/13 20:21:34 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/02/13 22:06:03 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/02/15 18:44:47 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ t_vector		ft_middle_point_vect(t_vector v1, t_vector v2)
 	return (point);
 }
 
-float			ft_distance_vect(t_vector v1, t_vector v2)
+double			ft_distance_vect(t_vector v1, t_vector v2)
 {
-	float		result;
+	double		result;
 
-	result = (float)sqrt((pow(v2.x_pos - v1.x_pos, 2) + pow(v2.y_pos - v2.x_pos, 2)
-					+ pow(v2.z_pos - v1.z_pos, 2)));
+	result = (double)sqrt((pow(v2.x_pos - v1.x_pos, 2)
+				+ pow(v2.y_pos - v2.x_pos, 2)
+				+ pow(v2.z_pos - v1.z_pos, 2)));
 	return (result);
 }
 

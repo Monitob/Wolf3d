@@ -6,7 +6,7 @@
 #    By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/11 16:51:17 by jbernabe          #+#    #+#              #
-#    Updated: 2014/02/13 15:45:05 by jbernabe         ###   ########.fr        #
+#    Updated: 2014/02/15 20:49:59 by jbernabe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = cc
 
 CFLAGS = -g --debug -Wall -Wextra -Werror -I./libft/ -I../minilibx/
 
-LIBMLX	= -L/usr/X11/lib/include/ -L/usr/X11/lib -lXext -lX11 -lmlx
+LIBMLX	= -L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx
 
 PATH_SRC = ./src
 PATH_OBJ = ./objs
@@ -22,7 +22,7 @@ PATH_INC = ./includes
 
 NAME = rtv_bin 
 
-SRC = main.c ray.c fcn_op.c
+SRC = main.c ray.c fcn_op.c fcn_op2.c fcn_op3.c
 
 OBJ = $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRC))
 
