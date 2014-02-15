@@ -18,7 +18,7 @@ SRC = main.c display_screen.c ft_open.c init_data.c  ray_position.c
 
 OBJ = $(SRC:.c=.o)
 
-CFLAGS = -Wall -Wextra -Werror -I./libft/
+CFLAGS = -Wall -Wextra -Werror -I./libft/ -I../minilibx/
 
 all: $(NAME)
 

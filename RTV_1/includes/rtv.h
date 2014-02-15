@@ -71,14 +71,15 @@ typedef struct		s_univers
 //	t_vector		*vector;
 }					t_univers;
 
-int			view_plane_camera(t_univers *v);
+t_vector	ft_float_by_vector(float a, t_vector v1);
+int		view_plane_camera(t_univers *v);
 t_vector	ft_mult_vector(t_vector v1, t_vector v2);
 t_vector	ft_subb_vector(t_vector v1, t_vector v2);
 t_vector	ft_add_vector(t_vector v1, t_vector v2);
 t_vector	ft_creat_vector(float x, float y, float z);
 void		error_command(char *s);
-int			key_control(int key_code);
-int			expose_hook(t_univers *v);
+int		key_control(int key_code);
+int		expose_hook(t_univers *v);
 void		init_univers(t_univers *v);
 void		init_windows(t_univers *v);
 

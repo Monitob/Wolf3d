@@ -134,7 +134,7 @@ void	ft_abso_int(int n)
 
 void	ft_caclc_height(t_map *map_l, t_ray *persp)
 {
-	t_data	*mur_data;
+	t_data	*mur_data = NULL;
 
 	persp->line_height = (map_l->height / persp->wall_dist);
 	ft_abso_int((int)persp->line_height);

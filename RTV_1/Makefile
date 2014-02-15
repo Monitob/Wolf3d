@@ -12,9 +12,9 @@
 
 CC = cc
 
-CFLAGS = -g --debug -Wall -Wextra -Werror -I./libft/
+CFLAGS = -g --debug -Wall -Wextra -Werror -I./libft/ -I../minilibx/
 
-LIBMLX	= -L /usr/X11/lib -lmlx -lXext -lX11
+LIBMLX	= -L/usr/X11/lib/include/ -L/usr/X11/lib -lXext -lX11 -lmlx
 
 PATH_SRC = ./src
 PATH_OBJ = ./objs
@@ -22,7 +22,7 @@ PATH_INC = ./includes
 
 NAME = rtv_bin 
 
-SRC = main.c ray.c
+SRC = main.c ray.c fcn_op.c
 
 OBJ = $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRC))
 
@@ -42,11 +42,11 @@ $(PATH_OBJ)/%.o: $(addprefix $(PATH_SRC)/, %.c)
 	@echo Compiling object : $<
 
 clean:
-	#@$(MAKE) -C libft $@
+	@$(MAKE) -C libft $@
 	@rm -f $(OBJ) 
 
 fclean:	clean
-	#@$(MAKE) -C libft $@
+	@$(MAKE) -C libft $@
 	@rm -f $(OBJ)
 	@rm -f $(NAME)
 

@@ -34,12 +34,11 @@ t_vector		ft_middle_point_vect(t_vector v1, t_vector v2)
 
 float			ft_distance_vect(t_vector v1, t_vector v2)
 {
-	t_vector	point;
 	float		result;
 
-	result = sqrt((pow(v2.x_pos - v1.x_pos, 2) + pow(v2.y_pos - v2.x_pos, 2)
+	result = (float)sqrt((pow(v2.x_pos - v1.x_pos, 2) + pow(v2.y_pos - v2.x_pos, 2)
 					+ pow(v2.z_pos - v1.z_pos, 2)));
-	return (float);
+	return (result);
 }
 
 t_vector		ft_mult_vector(t_vector v1, t_vector v2)
