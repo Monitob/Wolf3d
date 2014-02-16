@@ -12,23 +12,15 @@
 
 #include "rtv.h"
 
-void	error_command(char *s)
+void		init_univers(t_univers *v)
 {
-	ft_putstr(s);
-	exit(1);
-}
+	int	bpp;
+	int	s_line;
+	int	endian;
 
-void	init_univers(t_univers *v)
-{
-	v->w = RESO_X;
-	v->h = RESO_Y;
-	v->mlx = mlx_init();
-	v->win_ray = mlx_new_window(v->mlx, v->w, v->h, "Rtv");
-	v->img = mlx_new_image(v->mlx, v->w, v->h);
-	v->camera = malloc(sizeof(*(v->camera)));
-	v->vector = malloc(sizeof(*(v->vector)));
-	view_plane_camera(v);
-	v->data = mlx_get_data_addr(v->img, &(v->bpp), &(v->s_line), &(v->endian));
+	bpp = s_line = endian = 0;
+	v->img = mlx_new_image(v->mlx, RESO_X, RESO_Y);
+	v->data = mlx_get_data_addr(v->img, &(bpp), &(s_line), &(endian));
 }
 
 int		key_control(int key_code)
@@ -46,12 +38,14 @@ int		expose_hook(t_univers *v)
 
 int	main(void)
 {
-	t_univers	*v;
+	t_univers	uni;
 
-	v = (t_univers *)malloc(sizeof(t_univers));
-	init_univers(v);
-	mlx_expose_hook(v->mlx, expose_hook, &v);
-	mlx_key_hook(v->win_ray, key_control, &v);
-	mlx_loop(v->mlx);
+	uni.mlx = mlx_init();
+	uni.win_ray = mlx_new_window(uni.mlx, RESO_X, RESO_Y, "Rtv");
+	init_univers(&uni);
+	init_space(&uni);
+	mlx_key_hook(uni.win_ray, &key_control, &uni);
+	mlx_expose_hook(uni.mlx, &expose_hook, &uni);
+	mlx_loop(uni.mlx);
 	return (0);
 }

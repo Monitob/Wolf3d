@@ -42,7 +42,7 @@ t_vector		ft_subb_vector(t_vector v1, t_vector v2)
 	return (new_v);
 }
 
-t_vector		ft_creat_vector(double x, double y, double z)
+t_vector		creat_vector(double x, double y, double z)
 {
 	t_vector	v;
 

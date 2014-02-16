@@ -60,8 +60,6 @@ typedef struct		s_rgb
 
 typedef struct		s_univers
 {
-	int				w;
-	int				h;
 	int				key_type;
 	void			*mlx;
 	void			*win_ray;
@@ -78,18 +76,19 @@ typedef struct		s_univers
 	t_vector		*vector;
 }					t_univers;
 
+void		ft_windows_detect(t_univers *u);
+int		init_space(t_univers *u);
 double		ft_draw_sphere(t_vector orig, t_vector dir);
 t_vector	ft_normalize(t_vector pixel_pos);
 double		calcul_t(t_vector v);
 t_vector	ft_double_by_vector(double a, t_vector v1);
 t_vector	pixel_pos(t_vector view_up_left, t_vector rightvect
-						, t_vector upvect, double x, double y);
-int			view_plane_camera(t_univers *v);
+			, t_vector upvect, double x, double y);
+int		view_plane_camera(t_univers *v);
 t_vector	ft_mult_vector(t_vector v1, t_vector v2);
 t_vector	ft_subb_vector(t_vector v1, t_vector v2);
 t_vector	ft_add_vector(t_vector v1, t_vector v2);
-t_vector	ft_creat_vector(double x, double y, double z);
-void		error_command(char *s);
+t_vector	creat_vector(double x, double y, double z);
 int			key_control(int key_code);
 int			expose_hook(t_univers *v);
 void		init_univers(t_univers *v);
