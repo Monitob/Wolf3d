@@ -52,9 +52,9 @@
 
 typedef struct	s_world
 {
-	void		*init_mlx;
-	char		*mlx_data;
-	void		*init_win;
+	void	*mlx;
+	void	*win;
+	char	*file;
 }				t_world;
 
 typedef struct	s_camera
@@ -72,7 +72,7 @@ typedef struct	s_map
 {
 	int			height;
 	int			width;
-	int			**map;
+	int			*map;
 	int			map_x;
 	int			map_y;
 }				t_map;

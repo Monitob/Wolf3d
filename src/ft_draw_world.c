@@ -14,4 +14,4 @@
 
 void	ft_dra_wall(t_data *data)
 {
-	while (
+}

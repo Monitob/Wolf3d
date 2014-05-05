@@ -27,31 +27,15 @@ int			ft_display_screen(t_world *start)
 
 int			key_hook(int keycode, t_world *start)
 {
-	if (keycode == ESC)
-	{
-		mlx_destroy_window(start->init_mlx, start->init_win);
-		mlx_destroy_image(start->init_mlx, start->mlx_data);
-		exit(0);
-	}
-/*
-	else if (keycode,  == LEFT)
-		key_left(start);
-	else if (key == UP)
-		key_up(start);
-	else if (key == RIGHT)
-		key_right(start);
-	else if (key == DOWN)
-		key_down(start);
-*/
-		return (0);
+	if (key == ESC)
+		exit (0);
+	(void)start;
+	return (0);
 }
 
 int			expose_hook(t_data *start)
 {
-	if ((mlx_put_image_to_window(start->win->init_mlx,
-						start->win->init_win,
-						start->imag->ptr_img, IMG_POS_X, IMG_POS_Y)) == 0)
-		exit(0);
+	get_img(head);
 	return (0);
 }
 
