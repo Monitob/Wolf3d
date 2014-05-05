@@ -6,25 +6,25 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 20:44:27 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/01/14 20:48:10 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/02/07 21:15:20 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_deltab_int(int **t)
+void	ft_del_tab_int(int **tb)
 {
 	int	i;
 
 	i = 0;
-	if (t != NULL)
+	if (tb != NULL)
 	{
-		while (t != NULL)
+		while (tb[i] != NULL)
 		{
-			free(t[i]);
+			free(tb[i]);
 			i++;
 		}
-		free(t[i]);
-		free(t);
+		free(tb[i]);
+		free(tb);
 	}
 }

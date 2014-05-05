@@ -6,20 +6,20 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 19:52:33 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/01/14 20:38:58 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/04/17 02:46:43 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tablen(char **tab)
+int		ft_tab_len(char **tb)
 {
 	int	i;
 
 	i = 0;
-	if (tab == NULL)
+	if (tb == NULL)
 		return (0);
-	while (tab[i] != NULL)
+	while (tb[i] != NULL)
 		i++;
 	return (i);
 }

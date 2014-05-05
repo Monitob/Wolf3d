@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_is_double.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/26 21:35:08 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/04/17 00:26:03 by jbernabe         ###   ########.fr       */
+/*   Created: 2014/05/02 13:25:00 by jbernabe          #+#    #+#             */
+/*   Updated: 2014/05/02 13:30:33 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_is_double(char *str, int i, int car)
 {
-	int	i;
+	int		j;
 
-	i = 0;
-	while (s[i])
+	j = 0;
+	while (j < i)
 	{
-		if (s[i] == c)
-			return ((char *)s + i);
-		i++;
+		if (str[j] == car)
+			return (1);
+		j++;
 	}
-	if (s[i] == c)
-		return ((char *)s + i);
-	return (NULL);
+	return (0);
 }

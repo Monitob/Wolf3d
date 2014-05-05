@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_fast_strlen.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/26 21:35:08 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/04/17 00:26:03 by jbernabe         ###   ########.fr       */
+/*   Created: 2014/04/17 01:09:07 by jbernabe          #+#    #+#             */
+/*   Updated: 2014/05/02 19:55:35 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stdint.h>
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
+size_t					ft_fast_strlen(const char	*text)
 {
-	int	i;
+	const char			*s;
+	const uint32_t		*pdw_text;
+	register uint32_t	dw_text;
 
-	i = 0;
-	while (s[i])
+	pdw_text = (uint32_t *)text;
+	while (1)
 	{
-		if (s[i] == c)
-			return ((char *)s + i);
-		i++;
+		dw_text = *pdw_text;
+		if ((dw_text - 0x01010101UL) & ~dw_text & 0x80808080UL)
+		{
+			s = (const char *)pdw_text;
+			while (*s)
+				s++;
+			return (s - text);
+		}
+		pdw_text++;
 	}
-	if (s[i] == c)
-		return ((char *)s + i);
-	return (NULL);
 }

@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_deltab.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jbernabe <jbernabe@tabtudent.42.fr>          +#+  +:+       +#+        */
+/*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/14 20:29:36 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/01/14 20:39:56 by jbernabe         ###   ########.fr       */
+/*   Created: 2014/03/23 22:11:27 by jbernabe          #+#    #+#             */
+/*   Updated: 2014/03/23 22:11:34 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_deltab(char **tab)
+void	ft_del_tab(char **tb)
 {
 	int	i;
 
 	i = 0;
-	if (tab != NULL)
+	if (tb != NULL)
 	{
-		while (tab != NULL)
+		while (tb != NULL)
 		{
-			free(tab[i]);
+			free(tb[i]);
 			i++;
 		}
-		free (tab[i]);
-		free (tab);
+		free (tb[i]);
+		free (tb);
 	}
 }

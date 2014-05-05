@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/26 10:40:05 by jbernabe          #+#    #+#             */
-/*   Updated: 2013/12/01 20:57:50 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/04/17 00:46:25 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 	while ((*(s1 + i) != '\0') && (i < n))
 	{
 		j = 0;
-		while ((*(s1 + i + j ) == s2[j]) && ((i + j) < n) && (s2[j] != '\0'))
+		while ((*(s1 + i + j) == s2[j]) && ((i + j) < n) && (s2[j] != '\0'))
 		{
 			j++;
 		}

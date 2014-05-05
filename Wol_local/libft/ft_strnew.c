@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 19:12:01 by jbernabe          #+#    #+#             */
-/*   Updated: 2013/12/06 16:27:04 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/04/17 00:43:07 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ char	*ft_strnew(size_t size)
 			ptr[i] = '\0';
 			i++;
 		}
-	return (ptr);
+		return (ptr);
 	}
 }

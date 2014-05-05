@@ -6,13 +6,13 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 11:43:09 by jbernabe          #+#    #+#             */
-/*   Updated: 2013/12/28 09:13:18 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/04/17 00:53:26 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		is_white(char s)
+static int	is_white(char s)
 {
 	if (s == ' ' || s == '\n' || s == '\t')
 		return (1);
@@ -20,7 +20,7 @@ static int		is_white(char s)
 		return (0);
 }
 
-char	*ft_strtrim(char const *s)
+char		*ft_strtrim(char const *s)
 {
 	char	*str;
 	size_t	st_len;
