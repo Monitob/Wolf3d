@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 17:46:53 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/01/17 21:46:04 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/05/06 05:34:37 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@
 # include <errno.h>
 # include <fcntl.h>
 /*
- * Maccros Ray
+** Maccros Ray
 */
 # define PI			3.14159
 # define POS_INIT_X 	22
 # define POS_INIT_Y 	12
 /*
- * Maccros Win
- */
-# define SCR_WIDTH		640
-# define SCR_HEIGHT		680
+** Maccros Win
+*/
+# define SCR_WIDTH		1200
+# define SCR_HEIGHT		1000
 /*
  * Maccros Img
  */
@@ -50,94 +50,43 @@
 # define DOWN			65364
 # define TO_RADIAN(x)	(x) PI / 180
 
-typedef struct	s_world
+typedef struct	s_vect
 {
-	void	*mlx;
-	void	*win;
-	char	*file;
-}				t_world;
+	double		x;
+	double		y;
+}				t_vect;
 
-typedef struct	s_camera
+typedef struct 	s_wf
 {
-	double		posi_x;
-	double		posi_y;
-	double		camera_x;
-	double		plane_x;
-	double		plane_y;
-	double		direct_x;
-	double		direct_y;
-}				t_camera;
+	void		*mlx;
+	void		*win;
+	int			**map;
+	int			len_m;
+	int			height_m;
+	int			fd;
+	int			map_h;
+	t_vect		origin;
+	t_vect		plane;
+	t_vect		dir;
+	t_vect		dist;
+	double		speed;
+	double		wall_length;
+	double 		rotation_sp;
+}				t_wf;
 
-typedef struct	s_map
-{
-	int			height;
-	int			width;
-	int			*map;
-	int			map_x;
-	int			map_y;
-}				t_map;
-
-typedef struct	s_img
-{
-	void		*ptr_img;
-	int			draw_star;
-	int			draw_end;
-	int			size_line;
-	int			endian;
-	int			bpp;
-	char		*data;
-	int			x;
-	int			y;
-}				t_img;
-
-typedef	struct	s_ray
-{
-	int			step_x;
-	int			step_y;
-	int			hit;
-	int			side;
-	float		raypos_x;
-	float		raypos_y;
-	float		raydir_x;
-	float		raydir_y;
-	float		presition;
-	int			angle;
-	int			speed;
-	float		side_dist_x;
-	float		side_dist_y;
-	float		delta_x;
-	float		delta_y;
-	float		wall_dist;
-	int			line_height;
-}				t_ray;
-
-typedef struct	s_data
-{
-	t_map		*map;
-	t_world		*win;
-	t_img		*imag;
-	t_img		*floor;
-	t_img		*murs;
-	t_ray		*persp;
-	t_camera	*camera;
-}				t_data;
-
-int			expose_hook(t_data *start);
-t_data		*init_data(t_data *data);
-t_map		*ft_filling_world(int fd, t_map *head);
-int			**ft_realloc_world(t_map *head, char **line, int size);
-int			ft_open(const char *file, int flag);
-int			key_hook(int keycode, t_world *start);
-int			ft_display_screen(t_world *start);
-void		get_img(t_data *img);
-int			player_position(t_map *map, t_camera *camera, t_ray	*persp); 
-void		ft_len_ray(t_ray *persp, t_map *map);
-void		ft_calcul_step(t_ray *persp, t_map *map);
-void		ft_dda(t_ray *persp, t_map *map);
-void		ft_abso_num(float n);
-void		ft_calc_proj_dist(t_map *map_l, t_ray *persp);
-void		ft_abso_int(int n);
-void		ft_caclc_height(t_map *map_l, t_ray *persp);
-int			player_position(t_map *map, t_camera *camera, t_ray	*persp);
+int				get_map(char *file);
+int				expose_hook(t_wf *game);
+int				key_hook(int keycode, t_wf *game);
+int				ft_open(char *file);
+// int			ft_display_screen(t_world *start);
+// int			player_position(t_map *map, t_camera *camera, t_ray	*persp); 
+// void		ft_len_ray(t_ray *persp, t_map *map);
+// void		ft_calcul_step(t_ray *persp, t_map *map);
+// void		ft_dda(t_ray *persp, t_map *map);
+// void		ft_abso_num(float n);
+// void		ft_calc_proj_dist(t_map *map_l, t_ray *persp);
+// void		ft_abso_int(int n);
+// void		ft_caclc_height(t_map *map_l, t_ray *persp);
+// int			player_position(t_map *map, t_camera *camera, t_ray	*persp);
 
 #endif

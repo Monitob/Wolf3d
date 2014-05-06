@@ -6,7 +6,7 @@
 #    By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/04 22:30:52 by jbernabe          #+#    #+#              #
-#    Updated: 2014/04/26 22:35:24 by jbernabe         ###   ########.fr        #
+#    Updated: 2014/05/06 05:42:18 by jbernabe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,16 +16,16 @@ NAME = wolf3d
 
 CFLAGS = -g --debug -I ../minilibx/  -Wall -Wextra -Werror -I./libft/ 
 
-LIBMLX	= -L../minilibx/ -L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx -lm
+LIBMLX	= -L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx -lm
+#-L../minilibx/ -L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx -lm
 #-L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx -lm
-
-
 
 PATH_SRC = ./src
 PATH_OBJ = ./objs
 PATH_INC = ./includes
 
-SRC = main.c display_screen.c ft_open.c init_data.c  ray_position.c
+SRC = main.c tools.c read_map.c display_screen.c 
+#ray_position.c 
 
 OBJ = $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRC))
 
