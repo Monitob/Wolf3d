@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 17:46:53 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/05/06 05:34:37 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/05/07 04:00:58 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <mlx.h>
 # include <libft.h>
 # include <sys/stat.h>
-# include <math.h>
+
 # include <sys/types.h>
 # include <string.h>
 # include <unistd.h>
@@ -65,19 +65,27 @@ typedef struct 	s_wf
 	int			height_m;
 	int			fd;
 	int			map_h;
+	int			is_colition;
 	t_vect		origin;
 	t_vect		plane;
 	t_vect		dir;
 	t_vect		dist;
+	t_vect		ray_orig;
+	t_vect		delta_dist;
+	t_vect		ray_dir;
+	t_vect		mapx;
 	double		speed;
 	double		wall_length;
 	double 		rotation_sp;
+	double		camera;
 }				t_wf;
 
-int				get_map(char *file);
+t_wf			*get_map(char *file);
 int				expose_hook(t_wf *game);
 int				key_hook(int keycode, t_wf *game);
 int				ft_open(char *file);
+void			draw_map(t_wf *game);
+void			ft_print_debug(int **tab);
 // int			ft_display_screen(t_world *start);
 // int			player_position(t_map *map, t_camera *camera, t_ray	*persp); 
 // void		ft_len_ray(t_ray *persp, t_map *map);

@@ -6,7 +6,7 @@
 #    By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/04 22:30:52 by jbernabe          #+#    #+#              #
-#    Updated: 2014/05/06 05:42:18 by jbernabe         ###   ########.fr        #
+#    Updated: 2014/05/07 04:02:42 by jbernabe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,7 @@ PATH_SRC = ./src
 PATH_OBJ = ./objs
 PATH_INC = ./includes
 
-SRC = main.c tools.c read_map.c display_screen.c 
-#ray_position.c 
+SRC = main.c tools.c read_map.c display_screen.c fct_debug.c
 
 OBJ = $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRC))
 

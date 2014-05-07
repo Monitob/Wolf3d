@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/05/05 23:53:42 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/05/06 05:41:57 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/05/07 03:35:36 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,53 +15,36 @@
 #include <fcntl.h>
 #include "wolf3d.h"
 
-/*int		**ft_realloc_world(t_map *head, char **line, int size)
+static int 		*str_new_int(int size)
 {
-	int	**res;
-	int	i;
-	int	j;
-	i = 0;
-	j = 0;
-	if (line == NULL || head->width != ft_tab_len(line))
-		return (NULL);
-	if ((res = (int **)ft_memalloc(sizeof(res) * (size + 1))) == NULL)
-		return (0);
-	while (i < size -1)
-	{
-		if ((res[i] = (int *)ft_memalloc(head->width * sizeof(int)))
-				== NULL)
-			return (NULL);
-		ft_memcpy(res[i], head->map[i], (int)(head->width * sizeof(int)));
-		i++;
-	}
-	if ((res[i] = (int *)ft_memalloc(head->width * sizeof(int))) == NULL)
-		return (0);
-	while (line[j] != NULL)
-	{
-		res[i][j] = ft_atoi(line[j]);
-		j++;
-	}
-	free(line);
-	free(head->map);
-	return (res);
-}*/
+	int	*line;
 
-static int 		**fct_line_tab(char *line, int **tab_int)
+	if (!size)
+		return (NULL);
+	if (!(line = (int *)ft_memalloc(sizeof(int) * size + 1)))
+		return (NULL);
+	ft_memset(line, 0, size);
+	line[size + 1] = -1;
+	return (line);
+}
+
+static int 		**fct_line_tab(char *line, int **tab_int, int count)
 {
-	int			*line_int;
 	int			len;
 	int			i;
 
 	len = (int)ft_fast_strlen(line);
 	i = 0;
-	printf("%sy len -> %zu\n", line, ft_fast_strlen(line));
-	while (i < len - 1)
+	if (!tab_int)
+		return (0);
+	if (!(tab_int[count] = str_new_int(len)))
+		exit(-1);
+	while (i < len)
 	{
-		if (!(line_int = (int *)ft_memalloc(sizeof(int) * len + 1)))
-			exit(-1);
-		
+		tab_int[count][i] = line[i] + 0 - 48;
 		i++;
 	}
+	tab_int[count][i] = -1;
 	return (tab_int);
 }
 
@@ -82,7 +65,7 @@ static t_wf		*init_data(t_wf *game, char *file)
 	game->plane.y = 0.66;
 	game->speed = 0.2;
 	game->rotation_sp = 0.1;
-	if (!(game->map = (int **)ft_memalloc(sizeof(int) * game->map_h)))
+	if (!(game->map = (int **)ft_memalloc(sizeof(int *) * game->map_h)))
 	{
 		free(game);
 		exit(-1);
@@ -90,18 +73,23 @@ static t_wf		*init_data(t_wf *game, char *file)
 	return (game);
 }
 
-int		get_map(char *file)
+t_wf			*get_map(char *file)
 {
-	char	*line;
-	t_wf	*game;
+	char		*line;
+	t_wf		*game;
+	int			count;
 	
 	line = NULL;
 	game = NULL;
+	count = 0;
+	if (!file)
+		exit(-1);
 	game = init_data(game, file);
 	while (get_next_line(game->fd, &line))
 	{
-		fct_line_tab(line, game->map);
+		game->map =	fct_line_tab(line,game->map, count);
+		count++;
 		free(line);
 	}
-	return (0);
+	return (game);
 }

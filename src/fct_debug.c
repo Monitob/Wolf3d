@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   fct_debug.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/05/05 23:59:31 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/05/07 03:27:21 by jbernabe         ###   ########.fr       */
+/*   Created: 2014/05/07 03:29:11 by jbernabe          #+#    #+#             */
+/*   Updated: 2014/05/07 03:33:08 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <fcntl.h>
 #include "wolf3d.h"
 
-int				ft_open(char *file)
+void		ft_print_debug(int **tab)
 {
-	int		fd;
+	int 	i;
+	int 	j;
 
-	if ((fd = open(file, O_RDWR)) == -1)
+	i = 0;
+	while (i < 24)
 	{
-		perror("Cannot open output file\n");
-		exit(0);
+		j = 0;
+		while (j < 24)
+		{
+			ft_putnbr(tab[i][j]);
+			ft_putchar(' ');
+			j++;
+		}
+		ft_putchar('\n');
+		i++;
 	}
-	if (fd == O_DIRECTORY)
-		exit (-1);
-	return (fd);
 }
