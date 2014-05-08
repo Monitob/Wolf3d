@@ -6,7 +6,7 @@
 #    By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/04 22:30:52 by jbernabe          #+#    #+#              #
-#    Updated: 2014/05/07 04:02:42 by jbernabe         ###   ########.fr        #
+#    Updated: 2014/05/07 22:00:38 by jbernabe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,11 @@ $(PATH_OBJ)/%.o: $(addprefix $(PATH_SRC)/, %.c)
 	@echo Compiling object : $<
 
 clean:
-	@$(MAKE) -C libft $@
+	#@$(MAKE) -C libft $@
 	@rm -f $(OBJ)
 
 fclean:	clean
-	@$(MAKE) -C libft $@
+	#@$(MAKE) -C libft $@
 	@rm -f $(OBJ)
 	@rm -f $(NAME)
 

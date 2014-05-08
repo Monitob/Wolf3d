@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 17:46:53 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/05/07 04:00:58 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/05/08 04:00:32 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <mlx.h>
 # include <libft.h>
 # include <sys/stat.h>
-
 # include <sys/types.h>
 # include <string.h>
 # include <unistd.h>
@@ -50,6 +49,7 @@
 # define DOWN			65364
 # define TO_RADIAN(x)	(x) PI / 180
 
+
 typedef struct	s_vect
 {
 	double		x;
@@ -69,14 +69,19 @@ typedef struct 	s_wf
 	t_vect		origin;
 	t_vect		plane;
 	t_vect		dir;
-	t_vect		dist;
+	t_vect		dist_m;
+	t_vect		dist_m2;
 	t_vect		ray_orig;
 	t_vect		delta_dist;
 	t_vect		ray_dir;
 	t_vect		mapx;
+	int			w_side;
+	int			step[2];
+	int			draw_init;
+	int			draw_end;
 	double		speed;
 	double		wall_length;
-	double 		rotation_sp;
+	double		rotation_sp;
 	double		camera;
 }				t_wf;
 
@@ -86,6 +91,10 @@ int				key_hook(int keycode, t_wf *game);
 int				ft_open(char *file);
 void			draw_map(t_wf *game);
 void			ft_print_debug(int **tab);
+t_wf			*get_dist(t_wf *game);
+t_wf			*detect_wall(t_wf *game);
+t_wf			*get_wall_length(t_wf *g);
+int				ft_color_tab(t_wf *g);
 // int			ft_display_screen(t_world *start);
 // int			player_position(t_map *map, t_camera *camera, t_ray	*persp); 
 // void		ft_len_ray(t_ray *persp, t_map *map);
