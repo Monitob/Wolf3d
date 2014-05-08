@@ -10,13 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
+CC = gcc
 
 NAME = wolf3d
 
 CFLAGS = -g --debug -I ../minilibx/  -Wall -Wextra -Werror -I./libft/ 
 
-LIBMLX	= -L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx -lm
+LIBMLX	= -L../minilibx/ -L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx -lm
 #-L../minilibx/ -L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx -lm
 #-L/usr/X11/lib/ -L/usr/X11/lib -lXext -lX11 -lmlx -lm
 
@@ -24,7 +24,7 @@ PATH_SRC = ./src
 PATH_OBJ = ./objs
 PATH_INC = ./includes
 
-SRC = main.c tools.c read_map.c display_screen.c fct_debug.c
+SRC = main.c tools.c read_map.c draw_game.c color.c display_screen.c fct_debug.c
 
 OBJ = $(patsubst %.c, $(PATH_OBJ)/%.o, $(SRC))
 

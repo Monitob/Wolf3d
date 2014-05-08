@@ -86,10 +86,12 @@ typedef struct 	s_wf
 }				t_wf;
 
 t_wf			*get_map(char *file);
+void			draw_map(t_wf *game);
 int				expose_hook(t_wf *game);
 int				key_hook(int keycode, t_wf *game);
 int				ft_open(char *file);
-void			draw_map(t_wf *game);
+t_wf			*init_camera(t_wf *game, int x);
+void			draw_line(int x, t_wf *g, int color);
 void			ft_print_debug(int **tab);
 t_wf			*get_dist(t_wf *game);
 t_wf			*detect_wall(t_wf *game);
