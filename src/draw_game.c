@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_game.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/05/08 21:57:19 by jbernabe          #+#    #+#             */
+/*   Updated: 2014/05/09 02:02:16 by jbernabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <math.h>
 #include "wolf3d.h"
@@ -6,34 +17,34 @@ t_wf		*get_wall_length(t_wf *g)
 {
 	if (g->w_side == 0)
 	{
-		g->wall_length = fabs((g->mapx.x - g->ray_orig.x + (1 - g->step[0]) / 2)
-							/ g->ray_dir.x);
+		g->wall_length = fabs((g->mapx.x - g->ray_orig.x
+			+ (1 - g->step[0]) / 2) / g->ray_dir.x);
 	}
 	else
 	{
-		g->wall_length = fabs((g->mapx.y - g->ray_orig.y + (1 - g->step[1]) / 2)
-							/ g->ray_dir.y);
+		g->wall_length = fabs((g->mapx.y - g->ray_orig.y
+			+ (1 - g->step[1]) / 2) / g->ray_dir.y);
 	}
 	return (g);
 }
 
-t_wf	*detect_wall(t_wf *game)
+t_wf		*detect_wall(t_wf *game)
 {
 	while (game->is_colition == 0)
 	{
-		if (game->dist_m.x < game->dist_m2.x)
+		if (game->dist_m.x < game->delta_dist.x)
 		{
-			game->dist_m.x += game->dist_m2.x;
+			game->dist_m.x += game->delta_dist.x;
 			game->mapx.x += game->step[0];
 			game->w_side = 0;
 		}
 		else
 		{
-			game->dist_m.y += game->dist_m2.y;
+			game->dist_m.y += game->delta_dist.y;
 			game->mapx.y += game->step[1];
 			game->w_side = 1;
 		}
-		if ((game->map[(int)game->mapx.x][(int)game->mapx.y]) > 1)
+		if ((game->map[(int)game->mapx.x][(int)game->mapx.y]) > 0)
 			game->is_colition = 1;
 	}
 	return (game);

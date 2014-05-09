@@ -1,15 +1,14 @@
-/* **************************************************************************
-*/ /*
-*/ /*                                                        :::      ::::::::
-*/ /*   read_map.c                                         :+:      :+:    :+:
-*/ /*                                                    +:+ +:+         +:+
-*/ /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+
-*/ /*                                                +#+#+#+#+#+   +#+
-*/ /*   Created: 2014/05/05 23:53:42 by jbernabe          #+#    #+#
-*/ /*   Updated: 2014/05/08 02:47:35 by jbernabe         ###   ########.fr
-*/ /*
-*/ /*
-************************************************************************** */
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/05/08 21:57:19 by jbernabe          #+#    #+#             */
+/*   Updated: 2014/05/09 02:02:52 by jbernabe         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
@@ -18,7 +17,7 @@
 
 static int 		*str_new_int(int size)
 {
-	int	*line;
+	int			*line;
 
 	if (!size)
 		return (NULL);
@@ -59,13 +58,13 @@ static t_wf		*init_data(t_wf *game, char *file)
 	game->origin.y = 5;
 	game->dir.x = -1;
 	game->dir.y = 0;
-	game->len_m = 512;
-	game->height_m = 384;
-	game->map_h = 24;
+	game->len_m = 700;
+	game->height_m = 400;
+	game->map_h = 400;
 	game->plane.x = 0;
 	game->plane.y = 0.66;
-	game->speed = 0.2;
-	game->rotation_sp = 0.1;
+	game->speed = 0.5;
+	game->rotation_sp = 0.3;
 	if (!(game->map = (int **)ft_memalloc(sizeof(int *) * game->map_h)))
 	{
 		free(game);
@@ -88,7 +87,7 @@ t_wf			*get_map(char *file)
 	game = init_data(game, file);
 	while (get_next_line(game->fd, &line))
 	{
-		game->map =	fct_line_tab(line,game->map, count);
+		game->map =	fct_line_tab(line, game->map, count);
 		count++;
 		free(line);
 	}

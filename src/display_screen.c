@@ -6,39 +6,39 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 21:25:31 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/05/08 04:01:46 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/05/09 02:03:50 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "wolf3d.h"
 
-t_wf	*get_dist(t_wf *game)
+t_wf		*get_dist(t_wf *g)
 {
-	if (game->ray_dir.x < 0)
+	if (g->ray_dir.x < 0)
 	{
-		game->step[0] = -1;
-		game->dist_m.x = (game->ray_orig.x - game->mapx.x) * game->dist_m2.x;
+		g->step[0] = -1;
+		g->dist_m.x = (g->ray_orig.x - g->mapx.x) * g->delta_dist.x;
 	}
 	else
 	{
-		game->step[0] = 1;
-		game->dist_m.x = (game->mapx.x + 1.0 - game->ray_orig.x) * game->dist_m2.x;
+		g->step[0] = 1;
+		g->dist_m.x = (g->mapx.x + 1.0 - g->ray_orig.x) * g->delta_dist.x;
 	}
-	if (game->ray_dir.y < 0)
+	if (g->ray_dir.y < 0)
 	{
-		game->step[1] = -1;
-		game->dist_m.y = (game->ray_orig.y - game->mapx.y) * game->dist_m2.y;
+		g->step[1] = -1;
+		g->dist_m.y = (g->ray_orig.y - g->mapx.y) * g->delta_dist.y;
 	}
 	else
 	{
-		game->step[1] = 1;
-		game->dist_m.y = (game->mapx.y + 1.0 - game->ray_orig.y) * game->dist_m2.y;
+		g->step[1] = 1;
+		g->dist_m.y = (g->mapx.y + 1.0 - g->ray_orig.y) * g->delta_dist.y;
 	}
-	return (game);
+	return (g);
 }
 
-t_wf	*init_camera(t_wf *game, int x)
+t_wf		*init_camera(t_wf *game, int x)
 {
 	game->camera = 2 * x / (double)(game->len_m) - 1;
 	game->ray_orig.x = game->origin.x;
@@ -57,9 +57,9 @@ t_wf	*init_camera(t_wf *game, int x)
 
 int			key_hook(int keycode, t_wf *game)
 {
+	game = ft_move(keycode, game);
 	if (keycode == ESC)
 		exit (0);
-	(void)game;
 	return (0);
 }
 

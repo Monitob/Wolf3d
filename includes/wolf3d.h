@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/14 17:46:53 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/05/08 04:00:32 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/05/09 01:30:37 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,6 @@
 # include <errno.h>
 # include <fcntl.h>
 /*
-** Maccros Ray
-*/
-# define PI			3.14159
-# define POS_INIT_X 	22
-# define POS_INIT_Y 	12
-/*
-** Maccros Win
-*/
-# define SCR_WIDTH		1200
-# define SCR_HEIGHT		1000
-/*
- * Maccros Img
- */
-# define IMG_SIZE_X		600
-# define IMG_SIZE_Y		600
-# define IMG_POS_X		0
-# define IMG_POS_Y		0
-/*
  * Maccros keys
  */
 # define ESC			65307
@@ -47,8 +29,6 @@
 # define RIGHT			65363
 # define UP				65362
 # define DOWN			65364
-# define TO_RADIAN(x)	(x) PI / 180
-
 
 typedef struct	s_vect
 {
@@ -68,9 +48,10 @@ typedef struct 	s_wf
 	int			is_colition;
 	t_vect		origin;
 	t_vect		plane;
+	double		old_plane;
 	t_vect		dir;
+	double		old_dir;
 	t_vect		dist_m;
-	t_vect		dist_m2;
 	t_vect		ray_orig;
 	t_vect		delta_dist;
 	t_vect		ray_dir;
@@ -97,6 +78,7 @@ t_wf			*get_dist(t_wf *game);
 t_wf			*detect_wall(t_wf *game);
 t_wf			*get_wall_length(t_wf *g);
 int				ft_color_tab(t_wf *g);
+t_wf			*ft_move(int keycode, t_wf *game);
 // int			ft_display_screen(t_world *start);
 // int			player_position(t_map *map, t_camera *camera, t_ray	*persp); 
 // void		ft_len_ray(t_ray *persp, t_map *map);

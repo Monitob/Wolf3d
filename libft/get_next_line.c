@@ -6,7 +6,7 @@
 /*   By: jbernabe <jbernabe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/08 16:59:29 by jbernabe          #+#    #+#             */
-/*   Updated: 2014/05/06 04:37:13 by jbernabe         ###   ########.fr       */
+/*   Updated: 2014/05/09 02:11:00 by jbernabe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int				get_next_line(int const fd, char **line)
 		*line = ft_strnew(1);
 		if (p_after != NULL)
 		{
+			free(*line);
 			*line = ft_strdup(p_after);
 			free(p_after);
 		}
